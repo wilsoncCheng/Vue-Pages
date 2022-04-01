@@ -5,12 +5,13 @@ set -e
 
 # 构建
 npm run build
+ 
+git add dist -f
 
-# cd 到构建输出的目录下 
-cd dist
+git commit -m"adding dist"
+git subtree push --prefix dist origin gh-pages
 
-git init
-git add -A
+
 git commit -m 'deploy'
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
