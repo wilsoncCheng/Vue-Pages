@@ -27,7 +27,7 @@
 </div>
 <!-- Project Two Row-->
 <div class="row gx-0 justify-content-center mb-3">
-    <div class="col-lg-6"><img class="img-fluid mb-3 mb-lg-0" src="https://scontent.fkhh1-1.fna.fbcdn.net/v/t39.30808-6/251591289_2230130230461430_8535085018649023666_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=825194&_nc_ohc=a5rSfIW5VkEAX8KuZqU&_nc_ht=scontent.fkhh1-1.fna&oh=00_AT-mzJa-JBNuBfTp-ZHbWZrS1JabEdCoRCYMPdYMiyXfRA&oe=6243874E"
+    <div class="col-lg-6"><img class="img-fluid mb-3 mb-lg-0" src="../assets/image/motorfell.jpg"
             alt="..." width="100%" /></div>
     <div class="col-lg-6 order-lg-first">
         <div class="bg-black text-center h-100 project">
@@ -61,7 +61,7 @@
             </p>
         </div>
     </div>
-    <div class="col-xl-4 col-lg-4"><img class="img-fluid mb-lg-0" src="https://scontent.fkhh1-2.fna.fbcdn.net/v/t39.30808-6/274125907_2158425437645180_3869593001027157815_n.jpg?stp=dst-jpg_p843x403&_nc_cat=110&ccb=1-5&_nc_sid=5cd70e&_nc_ohc=HcYM3DQAF7UAX833jz3&_nc_ht=scontent.fkhh1-2.fna&oh=00_AT9yZRZI_BOVoefN62w_CWlSb19tC7WSwX0YXgakoP9agQ&oe=62441121"
+    <div class="col-xl-4 col-lg-4"><img class="img-fluid mb-lg-0" src="../assets/image/home.jpg"
             alt="..." width="100%" /></div>
 </div></div></div>
 </template>

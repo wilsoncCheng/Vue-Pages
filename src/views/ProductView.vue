@@ -16,19 +16,14 @@
         </div>
     </div>
 </div>
-<PaginationTool></PaginationTool>
 </template>
 <script>
-import PaginationTool from '@/components/PaginationTool.vue'
 import emitter from '@/libs/emitter'
 export default {
   data () {
     return {
       product: {}
     }
-  },
-  components: {
-    PaginationTool
   },
   inject: ['emitter'],
   methods: {
