@@ -1,5 +1,5 @@
 <template >
-<div id="app" style='  height:800px;display: flex;
+<div id="app" style='height:800px;display: flex;
 align-items: center;
 padding-top: 40px;
 padding-bottom: 40px;
@@ -50,10 +50,10 @@ export default {
           document.cookie = `hexToken=${token};expires=${new Date(
             expired
           )}; path=/`
-          this.$router.push('/admin/products')
+          this.$router.push('/admin')
         })
         .catch((error) => {
-          alert(error.data.message)
+          alert(error.response.data.message)
           this.user.username = ''
           this.user.password = ''
         })

@@ -1,8 +1,12 @@
 <template>
+    <form @submit.prevent="submit"
+          class="vld-parent"
+          ref="formContainer">
+    </form>
 <div class="home">
     <div id="portfolio">
         <div class="container">
-            <div class="container-fluid p-0" id='coco'>
+            <div class="container-fluid p-0">
                 <div class="row mb-3">
                     <div class="col-lg-12 text-center">
                         <div class="section-title">
@@ -13,8 +17,8 @@
                 </div>
                 <div class="row g-0">
                     <div class="col-12 col-md-6 col-lg-4 mb-4 aos-init aos-animate">
-                        <div class="portfolio-box"><router-link to="/product/-MuvZImFhVdbr8AE0nyV">
-                            <img class="img-fluid" src="../assets/image/cute.jpg" alt="..." width="415" />
+                        <div class="portfolio-box"><router-link to="/product/-Mzwu-bqEk8hG2hHyeLv">
+                            <img class="img-fluid" src="../../assets/image/cute.jpg" alt="回頭一笑猴" width="415" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">最迷人的反叛角色</div>
                                 <div class="project-name">回頭一笑猴</div>
@@ -23,7 +27,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4 aos-init aos-animate">
                         <div class="portfolio-box"><router-link to="/product/-MypjOMWHDFogCai6Tmr">
-                            <img class="img-fluid" src="../assets/image/office.jpg" alt="..." width="415" />
+                            <img class="img-fluid" src="../../assets/image/office.jpg" alt="辦公猴猴" width="415" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">別給我偷懶！！</div>
                                 <div class="project-name">辦公猴猴</div>
@@ -31,8 +35,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4 aos-init aos-animate">
-                        <div class="portfolio-box"><router-link to="/product/-MuvPlG48NJZmZbhDsDS">
-                            <img class="img-fluid" src="../assets/image/milk.jpg" alt="..." width="415" />
+                        <div class="portfolio-box"><router-link to="/product/-N-4LPSyYKzROVS-dDHh">
+                            <img class="img-fluid" src="../../assets/image/milk.jpg" alt="早起巡邏猴" width="415" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">今天早餐豆漿真香</div>
                                 <div class="project-name">早起巡邏猴</div>
@@ -40,8 +44,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4 aos-init aos-animate">
-                        <div class="portfolio-box"><router-link to="/product/-Muv_gaQQLtRCmG_CcVs">
-                            <img class="img-fluid" src="../assets/image/motor.jpg" alt="..." width="415" />
+                        <div class="portfolio-box"><router-link to="/product/-MzwvYE1UoAcqXReKXlg">
+                            <img class="img-fluid" src="../../assets/image/motor.jpg" alt="重機猴" width="415" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">剛誰按我喇叭？</div>
                                 <div class="project-name">重機猴</div>
@@ -50,16 +54,16 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4 aos-init aos-animate">
                         <div class="portfolio-box"><router-link to="/product/-MypfaQMdvs8Zk98LEld">
-                            <img class="img-fluid" src="../assets/image/model.jpg" alt="..." width="415" />
+                            <img class="img-fluid" src="../../assets/image/model.jpg" alt="背影猴" width="415" />
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">偶的背影</div>
-                                <div class="project-name">這橘子，真香阿！</div>
+                                <div class="project-category text-white-50">這橘子，真香阿！</div>
+                                <div class="project-name">背影猴</div>
                             </div></router-link>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4 aos-init aos-animate">
-                        <div class="portfolio-box"><router-link to="/product/-MuvaBDLL7EYRT1prkfa">
-                            <img class="img-fluid" src="../assets/image/grass.jpg" alt="..." width="415" />
+                        <div class="portfolio-box"><router-link to="/product/-Mw2JDBgqDU7GsZQLNc3">
+                            <img class="img-fluid" src="../../assets/image/grass.jpg" alt="健康美顏猴" width="415" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">粗草囉</div>
                                 <div class="project-name">健康美顏猴</div>
@@ -144,7 +148,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-cover py-5 d-flex align-items-center mb-3" style="background-color:rgb(116, 129, 126, 0.9);height: 300px;">
+    <div class="bg-cover py-5 d-flex align-items-center" style='background-image: url("https://blogger.googleusercontent.com/img/a/AVvXsEixZEe0QOocUhc4dtxve2KsYDewawMfTDd_6GRwLFOK26LYBdtljYiXxu0UBXWLKmsgpRQh6hUH_4NxS_TeNmW4qBpBZKAZgBGDO61N3gm5WPmPDXxCVjbQQBPgEKFzmA_tXqiwC6IaAoVd7O2vZopdEBzcmMccN0UHvMh3amafKBZQLYrPENcwChXD");background-repeat: no-repeat;'>
         <div class="container">
             <div class="row">
                 <div class="col-12 e-paper text-light">
@@ -161,6 +165,7 @@
 </div>
 </template>
 <script>
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   name: 'HomeView',
   methods: {
@@ -175,8 +180,19 @@ export default {
         )
         .then((res) => {
           alert(res)
+        }).catch((err) => {
+          alert(err)
         })
+    },
+    submit () {
+      const loader = this.$loading.show()
+      setTimeout(() => {
+        loader.hide()
+      }, 1000)
     }
+  },
+  mounted () {
+    this.submit()
   }
 }
 </script>

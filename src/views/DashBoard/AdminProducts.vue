@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <form @submit.prevent="submit"
+      class="vld-parent"
+      ref="formContainer">
+    </form>
     <div class="container">
       <div class="row py-3">
         <div class="col-md-6">
@@ -50,9 +54,6 @@
               </tr>
             </tbody>
           </table>
-          <!--內層:pages,外層:pagination-->
-          <!--內層:get-product,外層:getData-->
-          <pagination :pages="pagination" @get-product="getData"></pagination>
         </div>
         <div class="col-md-6 mt-4">
             <div class="modal-dialog modal-xl">
@@ -96,7 +97,7 @@
                                         </div>
                                     </div>
                                     <div v-else>
-                                        <button class="btn btn-outline-primary btn-sm d-block w-100"
+                                        <button type="button" class="btn btn-outline-primary btn-sm d-block w-100"
                                             @click="createImages">
                                             新增圖片
                                         </button>
@@ -169,6 +170,7 @@
   </div>
 </template>
 <script>
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
@@ -183,12 +185,14 @@ export default {
   inject: ['emitter'],
   methods: {
     checkadmin () {
+      const loader = this.$loading.show()
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
       this.$http.defaults.headers.common.Authorization = token
       const url = `${process.env.VUE_APP_API}/api/user/check`
       this.$http.post(url)
         .then((res) => {
           this.getProducts()
+          loader.hide()
         })
         .catch((err) => {
           alert(err.data.message)
@@ -198,7 +202,7 @@ export default {
     getProducts () {
       this.$http
         .get(
-          `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+          `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/all`
         )
         .then((res) => {
           this.products = res.data.products
@@ -211,7 +215,6 @@ export default {
         .then((response) => {
           this.products = response.data.products
           this.pagination = response.data.pagination
-          console.log(this.pagination)
         })
         .catch((err) => {
           alert(err.data.message)
@@ -262,7 +265,7 @@ export default {
           })
         })
         .catch((err) => {
-          alert(err.data.message)
+          alert(err.response.data.message)
         })
     }
   },

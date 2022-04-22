@@ -5,6 +5,9 @@ import { required, email, min, max } from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import 'bootstrap'
+import { createPopper } from '@popperjs/core'
+import VueLoading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
@@ -22,6 +25,8 @@ setLocale('zh_TW')
 const app = createApp(App)
 app.use(VueAxios, axios)
 app.use(router)
+app.use(VueLoading)
+app.use(createPopper)
 app.component('VeeField', Field)
 app.component('VeeForm', Form)
 app.component('ErrorMessage', ErrorMessage)

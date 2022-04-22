@@ -1,7 +1,6 @@
 <template>
-        <footer class="py-3 bg">
+        <footer class="py-3 bg footer">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2">首頁</a></li>
             <li class="nav-item">
                 <router-link class="nav-link px-2" to="/products" append>產品列表</router-link>
             </li>

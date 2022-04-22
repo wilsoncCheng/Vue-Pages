@@ -1,45 +1,49 @@
 <template>
-<div class="container mt-4 mb-4">
-    <!-- <div class="row justify-content-between" style=""> -->
-        <!-- <div class="col-sm-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">確認訂單</h5>
+<div class="container mt-4 mb-4 ">
+    <div class="row justify-content-between">
+        <div class="col-md-12 col-lg-6">
+            <div class="mt-4">
+                <table class="table align-middle">
+                    <thead style="text-align:center">
+                        <tr>
+                            <th>品名</th>
+                            <th>數量</th>
+                            <th>價格</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template v-if="cartData">
+          <tr v-for="item in cartData" :key="item.id">
+            <td class="text-center">
+              {{ item.product.title }}
+            </td>
+           <td >
+              <div class="input-group input-group-sm text-center">
+                <div class="mb-3" style="display:flex;margin:0 auto">
+                      {{ item.qty }}
+                  <span class="input-group-text" style="margin-left:20px" id="basic-addon2">{{
+                    item.product.unit
+                    }}</span>
                 </div>
+              </div>
+            </td>
+            <td class="text-center">
+              {{ item.total }}
+            </td>
+          </tr>
+        </template>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-end text-success">總價</td>
+                            <td class="text-end text-success">{{order.total}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">建立訂單</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">完成訂單</h5>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="row g-0 justify-content-between">
-        <div class="col-md-6 col-lg-5 px-3">
-            <h2 class="fs-4 d-flex mb-4"> 訂單內容&nbsp; <span class="text-danger">(未付款)</span></h2>
-            <ul class="list-unstyled" v-for="item in order_product" :key="item.id">
-                <li class="d-flex align-items-center mb-4">
-                    <img :src="item.product.imageUrl"  class="cart-img" alt="">
-                    <div class="cart-cont col px-3 d-flex">
-                        <div class="col-7 pe-2">
-                            <p class="m-0">{{item.product.title}}</p><small>數量：1</small></div>
-                        <div class="col-5 ls-1 text-end">$ {{item.product.price}} NTD</div>
-                    </div>
-                </li>
-            </ul>
-            <hr>
-            <p class="text-primary"> 總計金額：$ <span class="fs-4">{{order.total}}</span> NTD </p>
-        </div> -->
-        <div class="col-md-12 p-4 py-5 p-md-5 bg-white">
+        <div class="my-5 row col-md-12 col-lg-6 justify-content-center">
             <h2 class="fs-4 d-flex mb-4">訂購資訊</h2>
             <ul class="list-unstyled">
                 <li class="d-flex">
@@ -50,7 +54,6 @@
                     <p class="col-4 text-nowrap">訂單編號：</p>
                     <p class="col">{{order.id}}</p>
                 </li>
-                <!---->
                 <li class="d-flex">
                     <p class="col-4">Email：</p>
                     <p class="col">{{order_user.email}}</p>
@@ -71,14 +74,15 @@
                     <p class="col-4">備註：</p>
                     <p class="col">無</p>
                 </li>
-            </ul><button type="submit" class="btn btn-primary w-100 py-3 mt-5" @click="payCheck()" ><p v-if="paid" class='disable'>已付款</p><p v-else>信用卡付款</p></button></div>
+            </ul><button type="submit" class="btn btn-primary w-100 py-3 mt-5" @click="payCheck()"><p v-if="paid" class='disable'>已付款</p><p v-else>信用卡付款</p></button></div>
     </div>
-<!-- </div> -->
+</div>
 </template>
 <script>
 export default {
   data () {
     return {
+      cartData: {},
       order: {},
       order_user: {},
       order_product: {},
@@ -96,6 +100,7 @@ export default {
           this.order = res.data.order
           this.order_user = res.data.order.user
           this.order_products = res.data.order.products
+          this.cartData = res.data.order.products
         }
         )
     },
@@ -111,7 +116,7 @@ export default {
           this.paid = '已繳費'
         }
         ).catch((err) => {
-          console.log(err)
+          alert(err.response.data.message)
         })
     }
   },

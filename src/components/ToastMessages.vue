@@ -12,11 +12,7 @@
           class="p-2 rounded me-2 d-inline-block"
         ></span>
         <strong class="me-auto">{{ msg.title }}</strong>
-        <button
-          type="button"
-          class="btn-close"
-          aria-label="Close"
-        ></button>
+   <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>
 </template>

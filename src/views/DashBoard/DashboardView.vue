@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">後台管理頁面</a>
+       <router-link class="navbar-brand" to="/admin"
+              >後台管理頁面</router-link
+            >
       <button
         class="navbar-toggler"
         type="button"
@@ -16,24 +18,20 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin/products"
-              >後台產品列表</router-link
-            >
-          </li>
-          <li class="nav-item">
             <router-link class="nav-link" to="/admin/Order"
               >訂單</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/"
-              >回到前台</router-link
-            >
+            <a class="nav-link" @click="logout()">
+              登出
+            </a>
           </li>
         </ul>
       </div>
     </div>
-  </nav><ToastMessages></ToastMessages>
+  </nav>
+ <ToastMessages/>
   <router-view v-if="checkSuccess"> </router-view>
 </template>
 <script>
@@ -69,10 +67,21 @@ export default {
             this.checkSuccess = true
           })
           .catch((err) => {
-            alert(err.data.message)
+            alert(err.response.data.message)
             this.$router.push = ('/login')
           })
       }
+    },
+    logout () {
+      const api = `${process.env.VUE_APP_API}logout`
+      this.$http
+        .post(api)
+        .then((res) => {
+          this.$router.push('/')
+        })
+        .catch((error) => {
+          alert(error.response.data.message)
+        })
     }
   }
 }

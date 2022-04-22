@@ -1,61 +1,61 @@
 /* eslint-disable */
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/Frontend/HomeView.vue'
 
 const routes = [{
         path: '/',
         component: () =>
-            import ('../views/FrontView.vue'),
+            import ('../views/Frontend/FrontView.vue'),
         children: [{
-                path: '/',
+                path: '',
                 name: 'home',
                 component: HomeView
             },
             {
                 path: 'products',
                 component: () =>
-                    import ('../views/ProductsView.vue')
+                    import ('../views/Frontend/ProductsView.vue')
             },
             {
                 path: 'product/:id',
                 component: () =>
-                    import ('../views/ProductView.vue')
+                    import ('../views/Frontend/ProductView.vue')
             },
             {
                 path: 'cart',
                 component: () =>
-                    import ('../views/CartView.vue')
+                    import ('../views/Frontend/CartView.vue')
             },
             {
                 path: 'payment/:id',
                 component: () =>
-                    import ('../views/PaymentsView.vue')
+                    import ('../views/Frontend/PaymentsView.vue')
             },
             {
                 path: 'me',
                 component: () =>
-                    import ('../views/AboutMe.vue')
+                    import ('../views/Frontend/AboutMe.vue')
             },
         ]
     },
     {
         path: '/login',
         component: () =>
-            import ('../views/LoginView.vue')
+            import ('../views/Frontend/LoginView.vue')
     },
     {
         path: '/admin',
         component: () =>
-            import ('../views/DashboardView.vue'),
+            import ('../views/DashBoard/DashboardView.vue'),
         children: [{
-                path: 'products',
+                path: '',
                 component: () =>
-                    import ('../views/AdminProducts.vue')
+                    import ('../views/DashBoard/AdminProducts.vue')
             },
             {
                 path: 'order',
                 component: () =>
-                    import ('../views/AdminOrder.vue')
+                    import ('../views/DashBoard/AdminOrder.vue')
             }
         ]
     }

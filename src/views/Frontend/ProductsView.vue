@@ -1,31 +1,27 @@
 <template>
 <div class="container">
+    <form @submit.prevent="submit"
+          class="vld-parent"
+          ref="formContainer">
+    </form>
     <div class="row">
-        <div class="col-3">
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group"
-                style="flex-direction:column;width:100%">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                <label class="btn btn-outline-success" for="btnradio1" @click="ChangeList ('all')">全部</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                <label class="btn btn-outline-success" for="btnradio2" @click="ChangeList ('校園')">校園</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-success" for="btnradio3" @click="ChangeList ('自然')">自然</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                <label class="btn btn-outline-success" for="btnradio4" @click="ChangeList ('機械')">其他</label>
+        <div class="col-lg-3 col-md-12 col-sm-12">
+            <div class="list-group w-100 flex-direction-column text-center">
+  <a href="#/products" class="list-group-item list-group-item-action" :class="{'active': products === listproducts}" @click="ChangeList ('all')">全部</a>
+  <a href="#/products" class="list-group-item list-group-item-action" @click="ChangeList ('校園')">校園</a>
+  <a href="#/products" class="list-group-item list-group-item-action" @click="ChangeList ('自然')">自然</a>
+  <a href="#/products" class="list-group-item list-group-item-action" @click="ChangeList ('機械')">其他</a>
             </div>
         </div>
-        <div class="row col-9 row-cols-4 row-cols-lg-4">
-            <div class="col" v-for="product in listproducts" :key="product.id">
+        <div class="row col-lg-9 row-cols-lg-4 row-col-md-3 col-sm-12 mg0-a">
+            <div class="pd-1 mb-2" v-for="product in listproducts" :key="product.id">
                 <div class="card h-100">
                     <img :src="product.imageUrl" class="card-img-top" alt="">
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title">{{product.title}}</h5>
-                        <p class="card-text">{{product.description}}
+                        <p class="card-text mb-5">{{product.description}}
                         </p>
-                        <div class="btn-group btn-group-sm">
+                        <div class="btn-group btn-group-sm btn-absolute mb-1">
                             <router-link :to="`/product/${product.id}`" class="btn btn-outline-secondary"
                                 >
                                 <i class="fas fa-spinner fa-pulse" v-show="productID === product.id"></i>
@@ -40,20 +36,22 @@
                 </div>
             </div>
         </div>
-    <PaginationTool></PaginationTool>
+    <PaginationTool/>
     </div>
 </div>
 </template>
 
 <script>
 import PaginationTool from '@/components/PaginationTool.vue'
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
       products: [],
       cartData: {},
       listproducts: [],
-      isLoadingItem: ''
+      isLoadingItem: '',
+      productID: ''
     }
   },
   components: {
@@ -62,6 +60,7 @@ export default {
   inject: ['emitter'],
   methods: {
     getProducts (page = 1) {
+      const loader = this.$loading.show()
       this.$http
         .get(
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`
@@ -73,6 +72,7 @@ export default {
             pages: res.data.pagination
           })
         })
+      loader.hide()
     },
     addToCart (id, qty = 1) {
       const data = {
@@ -91,9 +91,12 @@ export default {
             style: 'success',
             title: '已經加入購物車'
           })
+          this.emitter.emit('get-cart', {
+          })
         })
     },
     ChangeList (type) {
+      const loader = this.$loading.show()
       this.listproducts = []
       if (type === 'all') {
         this.listproducts = this.products
@@ -104,6 +107,7 @@ export default {
           }
         })
       }
+      loader.hide()
     }
   },
   mounted () {

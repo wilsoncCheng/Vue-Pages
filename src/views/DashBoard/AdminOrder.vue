@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <form @submit.prevent="submit"
+      class="vld-parent"
+      ref="formContainer">
+    </form>
     <div class="container">
       <div class="row py-3">
         <div class="col-md-12">
@@ -9,7 +13,7 @@
               class="btn btn-danger"
               @click="delAllOrders()"
             >
-              完成所有訂單(千萬不要)
+              刪除所有訂單
             </button>
           </div>
           <table class="table table-hover mt-4 text-center">
@@ -27,28 +31,29 @@
               <th width="150">{{ item.id }}</th>
               <th width="100">{{ item.num }}</th>
               <th width="100">{{ item.total }}</th>
-              <th width="150">{{item.is_paid}}</th>
+                <th width="150">
+                  <span v-if="item.is_paid" class="text-success">已付款</span>
+                  <span v-else class="text-danger">未完成</span>
+                </th>
                 <th width="120" >
                   <button
                     type="button"
                     class="btn btn-outline-danger"
                     @click="delOrder(item.id)"
                   >
-                    完成
+                    刪除
                   </button>
                 </th>
               </tr>
             </tbody>
           </table>
-          <!--內層:pages,外層:pagination-->
-          <!--內層:get-product,外層:getData-->
-          <pagination :pages="pagination" @get-product="getData"></pagination>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
@@ -57,15 +62,17 @@ export default {
   },
   methods: {
     checkadmin () {
+      const loader = this.$loading.show()
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
       this.$http.defaults.headers.common.Authorization = token
       const url = `${process.env.VUE_APP_API}/api/user/check`
       this.$http.post(url)
         .then((res) => {
           this.getOrders()
+          loader.hide()
         })
         .catch((err) => {
-          alert(err.data.message)
+          alert(err.response.data.message)
           window.location = 'index.html'
         })
     },
@@ -76,7 +83,6 @@ export default {
         )
         .then((res) => {
           this.orders = res.data.orders
-          console.log(this.orders)
         })
     },
     delOrder (id) {
@@ -86,12 +92,12 @@ export default {
         .then((response) => {
           this.emitter.emit('push-message', {
             style: 'danger',
-            title: '訂單已完成'
+            title: '訂單已刪除'
           })
           this.getOrders()
         })
         .catch((err) => {
-          alert(err.data.message)
+          alert(err.response.data.message)
         })
     },
     delAllOrders () {
@@ -101,12 +107,12 @@ export default {
         .then((response) => {
           this.emitter.emit('push-message', {
             style: 'danger',
-            title: '所有訂單資料已刪除'
+            title: '所有訂單已刪除'
           })
           this.getOrders()
         })
         .catch((err) => {
-          alert(err.data.message)
+          alert(err.response.data.message)
         })
     }
   },

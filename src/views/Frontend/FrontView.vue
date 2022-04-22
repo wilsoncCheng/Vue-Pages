@@ -1,9 +1,9 @@
 <template>
- <FrontNavbar></FrontNavbar>
- <FrontSlide> </FrontSlide>
-  <router-view> </router-view>
- <FooterInfor> </FooterInfor>
- <ToastMessages></ToastMessages>
+ <FrontNavbar/>
+ <FrontSlide/>
+ <router-view/>
+ <FooterInfor/>
+ <ToastMessages/>
 </template>
 <script>
 import emitter from '@/Methods/EventBus.js'
