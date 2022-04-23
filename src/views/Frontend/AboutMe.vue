@@ -5,9 +5,20 @@
             <h2>關於猴樂園</h2>
             <hr class='divider'>
         </div>
-    </div>
-</div>
-<div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+    </div> <header class="py-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-xxl-6">
+                            <div class="text-center my-5">
+                                <h1 class="fw-bolder mb-3">每個人一生當中都會有1次機會可以真正的認識台灣獼猴</h1>
+                                <p class="lead fw-normal text-muted mb-4">多一份認識、多一分了解，你就有機會在下一次遇到他們時，做出真正對他們友善的選擇，他們不壞，只是你還不夠愛！</p>
+                              <a class="btn btn-primary btn-lg" href="#/me#scroll-target">趕緊開始專屬於你的獼猴導覽</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header></div>
+<div class="row gx-0 mb-5 mb-lg-0 justify-content-center"  id="scroll-target">
     <div class="col-lg-6"><img class="img-fluid mb-3 mb-lg-0" src="../../assets/image/mejpg.jpg" alt="猴子一家人" width="100%" /></div>
     <div class="col-lg-6">
         <div class="bg-black text-center h-100 project">

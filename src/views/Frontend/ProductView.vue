@@ -11,7 +11,8 @@
             <p class="lead">{{product.content}}</p>
             <div class="d-flex">
                 <router-link class="btn btn-outline-success btn-lg" style="margin-right:24px" to="/products" replace>回到商品頁</router-link>
-                <button type="button" class="btn btn-success btn-lg" @click="addToCart(product.id,)">加入購物車</button>
+                <button type="button" class="btn btn-success btn-lg" @click="addToCart(product.id,)"><div class="spinner-grow spinner-grow-sm text-warning" v-show="buyProductID === product.id" role="status"></div>
+                               加入購物車</button>
             </div>
         </div>
     </div>
@@ -23,7 +24,8 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
-      product: {}
+      product: {},
+      buyProductID: ''
     }
   },
   inject: ['emitter'],
@@ -41,6 +43,7 @@ export default {
       loader.hide()
     },
     addToCart (id, qty = 1) {
+      this.buyProductID = id
       const loader = this.$loading.show()
       const data = {
         product_id: id,
@@ -58,6 +61,7 @@ export default {
             style: 'success',
             title: '已經加入購物車'
           })
+          this.buyProductID = ''
         })
       loader.hide()
     }

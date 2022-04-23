@@ -28,10 +28,10 @@
                         </p>
                         <div class="btn-group btn-group-sm btn-absolute mb-1">
                             <router-link :to="`/product/${product.id}`" class="btn btn-outline-secondary">
-                                <i class="fas fa-spinner fa-pulse" v-show="productID === product.id"></i> 查看更多
+                                <i class="fas fa-spinner fa-pulse"></i> 查看更多
                             </router-link>
-                            <button type="button" class="btn btn-outline-danger" @click="addToCart(product.id)">
-                                <i class="fas fa-spinner fa-pulse" v-show="isLoadingItem === product.id"></i>
+                            <button type="button" class="btn btn-outline-danger" :class="{'disabled': buyProductID === product.id}" @click="addToCart(product.id)">
+                                <div class="spinner-grow spinner-grow-sm text-danger" v-show="buyProductID === product.id" role="status"></div>
                                 我想贊助
                             </button>
                         </div>
@@ -53,7 +53,7 @@ export default {
       products: [],
       cartData: {},
       isLoadingItem: '',
-      productID: '',
+      buyProductID: '',
       showProducts: [],
       allProducts: [],
       schoolProduct: [],
@@ -107,24 +107,24 @@ export default {
       }
     },
     addToCart (id, qty = 1) {
+      this.buyProductID = id
       const data = {
         product_id: id,
         qty: qty
       }
-      this.isLoadingItem = id
       this.$http
         .post(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`,
           { data }
         )
         .then((res) => {
-          this.isLoadingItem = ''
           this.emitter.emit('push-message', {
             style: 'success',
             title: '已經加入購物車'
           })
           this.emitter.emit('get-cart', {
           })
+          this.buyProductID = ''
         })
     },
     ChangeList (type) {

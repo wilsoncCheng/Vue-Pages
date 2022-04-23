@@ -1,5 +1,14 @@
-<template>
-<div class="container">
+<template><div class="container">
+    <div class="row d-flex-center">
+        <div class="col-md-6">
+            <ul class="process d-flex justify-content-between list-unstyled">
+                <li class="circle rounded-circle text-center bg-primary text-white py-lg-4 py-3"> 1. <br><span class="d-none d-lg-inline">清單確認</span></li>
+                <li class="circle rounded-circle text-center bg-secondary text-primary py-lg-4 py-3">
+                    2. <br><span class="d-none d-lg-inline">付款確認</span></li>
+                <li class="circle rounded-circle text-center bg-secondary text-primary py-lg-4 py-3"> 3. <br><span class="d-none d-lg-inline">完成訂單</span></li>
+            </ul>
+        </div>
+    </div>
     <form @submit.prevent="submit" class="vld-parent" ref="formContainer">
     </form>
     <div class="row">
@@ -20,38 +29,38 @@
                     </thead>
                     <tbody>
                         <template v-if="cartData.carts">
-          <tr v-for="item in cartData.carts" :key="item.id">
-            <td>
-              <button type="button" @click="removeCartItem(item.id)" class="btn btn-outline-danger btn-sm">
-               <div class="spinner-grow spinner-grow-sm" role="status" v-show='isLoadingItem'>
-               <span class="visually-hidden" ></span></div>
-             x
-              </button>
-            </td>
-            <td>
-              {{ item.product.title }}
-              <div class="text-success">已套用優惠券</div>
-            </td>
-            <td>
-              <div class="input-group input-group-sm">
-                <div class="input-group mb-3">
-                  <!-- <input min="1" type="number" class="form-control" v-model="item.product.unit"> -->
-                  <select id="" class="form-select" v-model="item.qty" @change="updateCartItem(item)">
-                    <option :value="num" v-for="num in 20" :selected="item.qty === num" :key="`${num}-${item.id}`">
-                      {{ num }}
-                    </option>
-                  </select>
-                  <span class="input-group-text" id="basic-addon2">{{
-                    item.product.unit
-                    }}</span>
+            <tr v-for="item in cartData.carts" :key="item.id">
+              <td>
+                <button type="button" @click="removeCartItem(item.id)" class="btn btn-outline-danger btn-sm">
+                 <div class="spinner-grow spinner-grow-sm" role="status" v-show='isLoadingItem'>
+                 <span class="visually-hidden" ></span></div>
+               x
+                </button>
+              </td>
+              <td>
+                {{ item.product.title }}
+                <div class="text-success">已套用優惠券</div>
+              </td>
+              <td>
+                <div class="input-group input-group-sm">
+                  <div class="input-group mb-3">
+                    <!-- <input min="1" type="number" class="form-control" v-model="item.product.unit"> -->
+                    <select id="" class="form-select" v-model="item.qty" @change="updateCartItem(item)">
+                      <option :value="num" v-for="num in 20" :selected="item.qty === num" :key="`${num}-${item.id}`">
+                        {{ num }}
+                      </option>
+                    </select>
+                    <span class="input-group-text" id="basic-addon2">{{
+                      item.product.unit
+                      }}</span>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td class="text-end">
-              {{ item.total }}
-            </td>
-          </tr>
-        </template>
+              </td>
+              <td class="text-end">
+                {{ item.total }}
+              </td>
+            </tr>
+          </template>
                         <div v-else>123</div>
                     </tbody>
                     <tfoot>
@@ -96,7 +105,7 @@
                 </div>
                 <div class="text-end">
                     <button class="btn btn-danger"><a @click="createOrder()" class="spinner-grow spinner-grow-sm" role="status" v-show='isLoadingOrder'>
-               <span class="visually-hidden" ></span></a>送出訂單</button>
+                 <span class="visually-hidden" ></span></a>送出訂單</button>
                 </div>
             </Vee-form>
         </div>

@@ -1,5 +1,15 @@
 <template>
 <div class="container mt-4 mb-4 ">
+    <div class="row d-flex-center">
+        <div class="col-md-6">
+            <ul class="process d-flex justify-content-between list-unstyled">
+                <li class="circle rounded-circle text-center bg-secondary text-primary py-lg-4 py-3"> 1. <br><span class="d-none d-lg-inline">清單確認</span></li>
+                <li class="circle rounded-circle text-center py-lg-4 py-3" :class="{'bg-secondary': isPay,'text-primary': isPay,'bg-primary': !isPay,'text-white': !isPay}">
+                    2. <br><span class="d-none d-lg-inline">付款確認</span></li>
+                <li class="circle rounded-circle text-center py-lg-4 py-3" :class="{'bg-secondary': !isPay,'text-primary': !isPay,'bg-primary': isPay,'text-white': isPay}"> 3. <br><span class="d-none d-lg-inline">完成訂單</span></li>
+            </ul>
+        </div>
+    </div>
     <div class="row justify-content-between">
         <div class="col-md-12 col-lg-6">
             <div class="mt-4">
@@ -74,7 +84,7 @@
                     <p class="col-4">備註：</p>
                     <p class="col">無</p>
                 </li>
-            </ul><button type="submit" class="btn btn-primary w-100 py-3 mt-5" @click="payCheck()"><p v-if="paid" class='disable'>已付款</p><p v-else>信用卡付款</p></button></div>
+            </ul><button type="submit" class="btn btn-primary w-100 py-3 mt-5" @click="payCheck()"><p v-if="isPay" class='disable'>已付款</p><p v-else>信用卡付款</p></button></div>
     </div>
 </div>
 </template>
@@ -87,7 +97,7 @@ export default {
       order_user: {},
       order_product: {},
       order_id: '',
-      paid: ''
+      isPay: false
     }
   },
   inject: ['emitter'],
@@ -113,7 +123,7 @@ export default {
             title: '已經完成繳費'
           }
           )
-          this.paid = '已繳費'
+          this.isPay = true
         }
         ).catch((err) => {
           alert(err.response.data.message)
