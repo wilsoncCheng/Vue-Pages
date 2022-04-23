@@ -13,6 +13,9 @@ import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
 import './assets/css/base.css'
+import './assets/css/animated.css'
+import './assets/css/owl.css'
+import './assets/css/templatemo-seo-dream.css'
 defineRule('required', required)
 defineRule('email', email)
 defineRule('min', min)

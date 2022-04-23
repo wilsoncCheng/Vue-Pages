@@ -10,8 +10,8 @@
             </div>
             <p class="lead">{{product.content}}</p>
             <div class="d-flex">
-                <router-link class="btn btn-outline-primary btn-lg" style="margin-right:24px" to="/products" replace>回到商品頁</router-link>
-                <button type="button" class="btn btn-primary btn-lg" @click="addToCart(product.id,)">加入購物車</button>
+                <router-link class="btn btn-outline-success btn-lg" style="margin-right:24px" to="/products" replace>回到商品頁</router-link>
+                <button type="button" class="btn btn-success btn-lg" @click="addToCart(product.id,)">加入購物車</button>
             </div>
         </div>
     </div>
@@ -19,6 +19,7 @@
 </template>
 <script>
 import emitter from '@/libs/emitter'
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
@@ -28,6 +29,7 @@ export default {
   inject: ['emitter'],
   methods: {
     getProduct () {
+      const loader = this.$loading.show()
       const { id } = this.$route.params
       this.$http
         .get(
@@ -36,13 +38,14 @@ export default {
         .then((res) => {
           this.product = res.data.product
         })
+      loader.hide()
     },
     addToCart (id, qty = 1) {
+      const loader = this.$loading.show()
       const data = {
         product_id: id,
         qty: qty
       }
-      this.isLoadingItem = id
       this.$http
         .post(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`,
@@ -56,6 +59,7 @@ export default {
             title: '已經加入購物車'
           })
         })
+      loader.hide()
     }
   },
   mounted () {

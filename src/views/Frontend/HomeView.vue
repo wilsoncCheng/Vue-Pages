@@ -73,6 +73,74 @@
                 </div>
             </div>
         </div>
+        <section class="pricing section-padding" id="section_5">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                       <h2 class="text-white mb-5 text-center">在中山大學裡，來一場猴友誼</h2>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="pricing-plan bg-white">
+                                <div class="d-flex flex-wrap align-items-center pricing-header">
+                                    <i class="pricing-icon bi-person"></i>
+
+                                    <div class="pricing-name">
+                                        <h4>個人方案</h4>
+                                    </div>
+
+                                    <div class="pricing-price">
+                                        <h4>$800/人</h4>
+                                    </div>
+                                    <small class="pricing-recommend">超值推薦</small>
+                                </div>
+
+                                <div class="pricing-body">
+                                    <h5 class="mb-3">你將體驗到...</h5>
+                                    <ul class="pricing-list">
+                                        <li class="pricing-list-item">中山大學景點導覽</li>
+                                        <li class="pricing-list-item">獼猴生態講解</li>
+                                        <li class="pricing-list-item">專業拍攝與猴互動的珍貴時刻</li>
+                                        <li class="pricing-list-item">提供<b>橡皮筋</b>保護安全</li>
+                                    </ul>
+                                    <h5 class="mt-lg-5 mt-4 mb-3">攝影拍攝與活動體驗的最佳首選</h5>
+                                    <p>帶你遠距離看看猴、拍拍猴、享受與猴的視覺饗宴</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12 mt-lg-0 mt-5">
+                            <div class="pricing-plan border-0 bg-white shadow-lg">
+                                <div class="d-flex flex-wrap align-items-center pricing-header">
+                                    <i class="pricing-icon bi-briefcase"></i>
+
+                                    <div class="pricing-name">
+                                        <h4>多人團報</h4>
+                                    </div>
+                                    <div class="pricing-price">
+                                        <h4>$4,600</h4>
+                                    </div>
+                                    <small class="pricing-recommend">商業方案</small>
+                                </div>
+
+                                <div class="pricing-body">
+                                    <h5 class="mb-3">你將體驗到...</h5>
+
+                                    <ul class="pricing-list">
+                                        <li class="pricing-list-item">中山大學學生日常</li>
+                                        <li class="pricing-list-item">獼猴近距離接觸</li>
+                                        <li class="pricing-list-item">專業拍攝與猴互動的珍貴時刻</li>
+                                        <li class="pricing-list-item">提供<b>水槍</b>防護自身安全</li>
+                                    </ul>
+                                    <h5 class="mt-lg-5 mt-4 mb-3">企業團建與家庭旅遊的第一選擇</h5>
+                                    <p>帶你近距離觀察猴、理解猴、享受與猴共舞的絕佳體驗</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay dark-overlay"></div>
+            </section>
         <div class="container">
             <div class="row mb-3">
                 <div class="col-lg-12 text-center">
@@ -184,7 +252,7 @@ export default {
           alert(err)
         })
     },
-    submit () {
+    loading () {
       const loader = this.$loading.show()
       setTimeout(() => {
         loader.hide()
@@ -192,7 +260,7 @@ export default {
     }
   },
   mounted () {
-    this.submit()
+    this.loading()
   }
 }
 </script>

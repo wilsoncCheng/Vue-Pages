@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg py-0 fixed navbar-dark z-index-3 header-background" >
+<nav class="navbar navbar-expand-lg py-0 fixed navbar-dark z-index-3 header-background">
     <div class="container-fluid container">
         <router-link class="navbar-brand header-a" to="/">威爾森的猴樂園</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
