@@ -14,7 +14,7 @@
         <div class="col-md-12 col-lg-6">
             <div class="mt-4">
                 <table class="table align-middle">
-                    <thead style="text-align:center">
+                    <thead>
                         <tr>
                             <th>品名</th>
                             <th>數量</th>
@@ -25,12 +25,12 @@
                     <tbody>
                         <template v-if="cartData">
           <tr v-for="item in cartData" :key="item.id">
-            <td class="text-center">
-              {{ item.product.title }}
-            </td>
+              <td> <img :src="item.product.imageUrl" class="mr-3" style="width:100px" alt="">
+                {{ item.product.title }}
+              </td>
            <td >
               <div class="input-group input-group-sm text-center">
-                <div class="mb-3" style="display:flex;margin:0 auto">
+                <div class="mb-3" style="display:flex;align-content: center;">
                       {{ item.qty }}
                   <span class="input-group-text" style="margin-left:20px" id="basic-addon2">{{
                     item.product.unit
@@ -53,7 +53,7 @@
                 </table>
             </div>
         </div>
-        <div class="my-5 row col-md-12 col-lg-6 justify-content-center">
+        <div class="my-5 row col-md-12 col-lg-6 justify-content-center bg-green p-4" v-if="!isPay">
             <h2 class="fs-4 d-flex mb-4">訂購資訊</h2>
             <ul class="list-unstyled">
                 <li class="d-flex">
@@ -84,7 +84,12 @@
                     <p class="col-4">備註：</p>
                     <p class="col">無</p>
                 </li>
-            </ul><button type="submit" class="btn btn-primary w-100 py-3 mt-5" @click="payCheck()"><p v-if="isPay" class='disable'>已付款</p><p v-else>信用卡付款</p></button></div>
+            </ul><button type="submit" class="btn btn-primary w-100 py-3 mt-5" @click="payCheck()"><p v-if="isPay" class='disable'>已付款</p><p v-else>信用卡付款</p></button>
+            </div>
+            <div class="my-5 row col-md-12 col-lg-6 justify-content-center bg-green p-4" v-else>
+              <img src="../../assets/image/laugh.jpg" alt="">
+              <div class="text-center mt-3 text-success"><h3><b>謝謝尼</b></h3></div>
+              </div>
     </div>
 </div>
 </template>

@@ -12,9 +12,9 @@
     <form @submit.prevent="submit" class="vld-parent" ref="formContainer">
     </form>
     <div class="row">
-        <div class="col-md-12 col-lg-6">
+        <div class="col-md-12 col-lg-6 p-4">
             <div class="mt-4">
-                <h2>購物車</h2>
+                <h2>確定訂單內容</h2>
                 <div class="text-end">
                     <button class="btn btn-outline-danger" type="button" @click="removeCarts()">清空購物車</button>
                 </div>
@@ -22,7 +22,7 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>商品名稱</th>
+                            <th>商品內容</th>
                             <th>數量</th>
                             <th>價格</th>
                         </tr>
@@ -37,15 +37,14 @@
                x
                 </button>
               </td>
-              <td>
+              <td> <img :src="item.product.imageUrl" class="mr-3" style="width:100px" alt="">
                 {{ item.product.title }}
-                <div class="text-success">已套用優惠券</div>
               </td>
               <td>
                 <div class="input-group input-group-sm">
                   <div class="input-group mb-3">
                     <!-- <input min="1" type="number" class="form-control" v-model="item.product.unit"> -->
-                    <select id="" class="form-select" v-model="item.qty" @change="updateCartItem(item)">
+                    <select class="form-select" v-model="item.qty" @change="updateCartItem(item)">
                       <option :value="num" v-for="num in 20" :selected="item.qty === num" :key="`${num}-${item.id}`">
                         {{ num }}
                       </option>
@@ -61,7 +60,6 @@
               </td>
             </tr>
           </template>
-                        <div v-else>123</div>
                     </tbody>
                     <tfoot>
                         <tr>
@@ -76,26 +74,26 @@
                 </table>
             </div>
         </div>
-        <div class="my-5 row col-md-12 col-lg-6 justify-content-center">
+        <div class="row col-md-12 col-lg-6 justify-content-center bg-green my-4 p-4">
             <Vee-form ref="form" v-slot="{ errors }" @submit="createOrder">
                 {{ error }}
                 <div class="mb-3  w-100">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                     <Vee-field id="email" name="email" type="email" class="form-control" :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email" rules="email|required" v-model="user.email"></Vee-field>
                     <error-message name="email" class="invalid-feedback"></error-message>
                 </div>
                 <div class="mb-3  w-100">
-                    <label for="name" class="form-label">收件人姓名</label>
+                    <label for="name" class="form-label">收件人姓名<span class="text-danger">*</span></label>
                     <Vee-field id="name" name="姓名" type="text" class="form-control" :class="{ 'is-invalid': errors['姓名'] }" placeholder="請輸入姓名" rules="required" v-model="user.name"></Vee-field>
                     <error-message name="姓名" class="invalid-feedback"></error-message>
                 </div>
                 <div class="mb-3">
-                    <label for="tel" class="form-label">收件人電話</label>
+                    <label for="tel" class="form-label">收件人電話<span class="text-danger">*</span></label>
                     <Vee-field id="tel" name="電話" type="tel" class="form-control" :class="{ 'is-invalid': errors['電話'] }" placeholder="請輸入電話" rules="required|min:8|max:10" v-model="user.tel"></Vee-field>
                     <error-message name="電話" class="invalid-feedback"></error-message>
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label">收件人地址</label>
+                    <label for="address" class="form-label">收件人地址<span class="text-danger">*</span></label>
                     <Vee-field id="address" name="地址" type="text" class="form-control" :class="{ 'is-invalid': errors['地址'] }" placeholder="請輸入地址" rules="required" v-model="user.address"></Vee-field>
                     <error-message name="地址" class="invalid-feedback"></error-message>
                 </div>
@@ -104,7 +102,7 @@
                     <textarea name="" id="message" class="form-control" cols="30" rows="10" v-model="message"></textarea>
                 </div>
                 <div class="text-end">
-                    <button class="btn btn-danger"><a @click="createOrder()" class="spinner-grow spinner-grow-sm" role="status" v-show='isLoadingOrder'>
+                    <button class="btn btn-success"><a @click="createOrder()" class="spinner-grow spinner-grow-sm" role="status" v-show='isLoadingOrder'>
                  <span class="visually-hidden" ></span></a>送出訂單</button>
                 </div>
             </Vee-form>
