@@ -238,7 +238,8 @@
                 <div class="overlay dark-overlay"></div>
             </section>
     </div>
-    <div class="bg-cover py-5 d-flex align-items-center" style='background-image: url("https://blogger.googleusercontent.com/img/a/AVvXsEixZEe0QOocUhc4dtxve2KsYDewawMfTDd_6GRwLFOK26LYBdtljYiXxu0UBXWLKmsgpRQh6hUH_4NxS_TeNmW4qBpBZKAZgBGDO61N3gm5WPmPDXxCVjbQQBPgEKFzmA_tXqiwC6IaAoVd7O2vZopdEBzcmMccN0UHvMh3amafKBZQLYrPENcwChXD");background-repeat: no-repeat;'>
+    <div class="bg-cover py-5 d-flex align-items-center" style='background-image: url("https://blogger.googleusercontent.com/img/a/AVvXsEixZEe0QOocUhc4dtxve2KsYDewawMfTDd_6GRwLFOK26LYBdtljYiXxu0UBXWLKmsgpRQh6hUH_4NxS_TeNmW4qBpBZKAZgBGDO61N3gm5WPmPDXxCVjbQQBPgEKFzmA_tXqiwC6IaAoVd7O2vZopdEBzcmMccN0UHvMh3amafKBZQLYrPENcwChXD");background-repeat: no-repeat;    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, .6);'>
         <div class="container">
             <div class="row">
                 <div class="col-12 e-paper text-light">

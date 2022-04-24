@@ -1,10 +1,10 @@
 <template>
 <div class="container mt-4 mb-4 ">
     <div class="row d-flex-center">
-        <div class="col-md-6">
+        <div class="col-md-6 position-relative" ><div class="lineleftPay"></div><div :class="{'lineright':!isPay,'linerightPay':isPay}"></div>
             <ul class="process d-flex justify-content-between list-unstyled">
-                <li class="circle rounded-circle text-center bg-secondary text-primary py-lg-4 py-3"> 1. <br><span class="d-none d-lg-inline">清單確認</span></li>
-                <li class="circle rounded-circle text-center py-lg-4 py-3" :class="{'bg-secondary': isPay,'text-primary': isPay,'bg-primary': !isPay,'text-white': !isPay}">
+                <li class="circle rounded-circle text-center  bg-primary text-white py-lg-4 py-3"> 1. <br><span class="d-none d-lg-inline">清單確認</span></li>
+                <li class="circle rounded-circle text-center py-lg-4 py-3 bg-primary text-white" >
                     2. <br><span class="d-none d-lg-inline">付款確認</span></li>
                 <li class="circle rounded-circle text-center py-lg-4 py-3" :class="{'bg-secondary': !isPay,'text-primary': !isPay,'bg-primary': isPay,'text-white': isPay}"> 3. <br><span class="d-none d-lg-inline">完成訂單</span></li>
             </ul>

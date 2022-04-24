@@ -1,6 +1,6 @@
 <template><div class="container">
     <div class="row d-flex-center">
-        <div class="col-md-6">
+        <div class="col-md-6 position-relative" ><div class="lineleft"></div><div class="lineright"></div>
             <ul class="process d-flex justify-content-between list-unstyled">
                 <li class="circle rounded-circle text-center bg-primary text-white py-lg-4 py-3"> 1. <br><span class="d-none d-lg-inline">清單確認</span></li>
                 <li class="circle rounded-circle text-center bg-secondary text-primary py-lg-4 py-3">

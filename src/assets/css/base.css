@@ -584,3 +584,37 @@
             display: flex;
             justify-content: center;
         }
+        
+        .lineleft {
+            width: 40%;
+            height: 6px;
+            position: absolute;
+            top: 40%;
+            background-color: #eff5ef;
+        }
+        
+        .lineright {
+            width: 40%;
+            height: 6px;
+            left: 50%;
+            position: absolute;
+            top: 40%;
+            background-color: #eff5ef;
+        }
+        
+        .lineleftPay {
+            width: 40%;
+            height: 6px;
+            position: absolute;
+            top: 40%;
+            background-color: green;
+        }
+        
+        .linerightPay {
+            width: 40%;
+            height: 6px;
+            left: 50%;
+            position: absolute;
+            top: 40%;
+            background-color: green;
+        }
