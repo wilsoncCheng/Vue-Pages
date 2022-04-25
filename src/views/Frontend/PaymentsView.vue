@@ -94,6 +94,7 @@
 </div>
 </template>
 <script>
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
   data () {
     return {
@@ -108,6 +109,7 @@ export default {
   inject: ['emitter'],
   methods: {
     getOrder () {
+      const loader = this.$loading.show()
       this.order_id = this.$route.params.id
       this.$http
         .get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.order_id}`)
@@ -116,10 +118,12 @@ export default {
           this.order_user = res.data.order.user
           this.order_products = res.data.order.products
           this.cartData = res.data.order.products
+          loader.hide()
         }
         )
     },
     payCheck () {
+      const loader = this.$loading.show()
       this.$http
         .post(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.order_id}`)
         .then((res) => {
@@ -129,6 +133,7 @@ export default {
           }
           )
           this.isPay = true
+          loader.hide()
         }
         ).catch((err) => {
           alert(err.response.data.message)

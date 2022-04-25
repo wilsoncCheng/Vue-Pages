@@ -12,7 +12,7 @@
             <div class="d-flex">
                 <router-link class="btn btn-outline-success btn-lg" style="margin-right:24px" to="/products" replace>回到商品頁</router-link>
                 <button type="button" class="btn btn-success btn-lg" @click="addToCart(product.id,)"><div class="spinner-grow spinner-grow-sm text-warning" v-show="buyProductID === product.id" role="status"></div>
-                               加入購物車</button>
+                               我想贊助</button>
             </div>
         </div>
     </div>
@@ -62,8 +62,8 @@ export default {
             title: '已經加入購物車'
           })
           this.buyProductID = ''
+          loader.hide()
         })
-      loader.hide()
     }
   },
   mounted () {

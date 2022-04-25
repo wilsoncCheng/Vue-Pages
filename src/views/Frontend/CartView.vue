@@ -146,9 +146,9 @@ export default {
             })
             this.$router.push('/products')
           }
+          loader.hide()
         }
         )
-      loader.hide()
     },
     removeCartItem (id) {
       this.isLoadingItem = id
@@ -224,8 +224,8 @@ export default {
             res
           })
           this.$router.push({ path: `/payment/${res.data.orderId}` })
+          loader.hide()
         })
-      loader.hide()
       this.isLoadingOrder = ''
       this.user = {}
     }

@@ -64,11 +64,6 @@ export default {
   },
   inject: ['emitter'],
   methods: {
-    begining () {
-      const loader = this.$loading.show()
-      this.getProducts()
-      loader.hide()
-    },
     getProducts (page = 1) {
       const loader = this.$loading.show()
       this.$http
@@ -94,8 +89,8 @@ export default {
               this.othersProduct.push(item)
             }
           })
+          loader.hide()
         })
-      loader.hide()
     },
     likeProduct (item) {
       if (item.like === false) {
@@ -141,7 +136,7 @@ export default {
     }
   },
   mounted () {
-    this.begining()
+    this.getProducts()
     this.emitter.on('deliver-page_now', (message) => {
       this.getProducts(message.page)
     })
