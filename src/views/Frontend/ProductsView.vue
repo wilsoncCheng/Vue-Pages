@@ -76,7 +76,6 @@ export default {
             item.like = false
           })
           this.showProducts = this.products
-          this.allProducts = this.products
           this.emitter.emit('push-pagination', {
             pages: res.data.pagination
           })
@@ -90,6 +89,14 @@ export default {
             }
           })
           loader.hide()
+        })
+      this.$http
+        .get(
+          `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+        )
+        .then((res) => {
+          this.products = res.data.products
+          this.allProducts = this.products
         })
     },
     likeProduct (item) {
