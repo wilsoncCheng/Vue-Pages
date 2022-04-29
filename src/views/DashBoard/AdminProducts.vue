@@ -190,12 +190,12 @@ export default {
       this.$http.defaults.headers.common.Authorization = token
       const url = `${process.env.VUE_APP_API}/api/user/check`
       this.$http.post(url)
-        .then((res) => {
+        .then(() => {
           this.getProducts()
           loader.hide()
         })
         .catch((err) => {
-          alert(err.data.message)
+          alert(err.response.data.message)
           window.location = 'index.html'
         })
     },
@@ -217,7 +217,7 @@ export default {
           this.pagination = response.data.pagination
         })
         .catch((err) => {
-          alert(err.data.message)
+          alert(err.response.data.message)
         })
     },
     updateProduct () {
@@ -228,14 +228,14 @@ export default {
         http = 'put'
       }
       this.$http[http](url, { data: this.tempProduct })
-        .then((res) => {
+        .then(() => {
           this.getProducts()
           this.emitter.emit('push-message', {
             style: 'success',
             title: '產品資料已更新'
           })
         }).catch((err) => {
-          alert(err.data.message)
+          alert(err.response.data.message)
         })
     },
     openModal (isNew, item) {
@@ -257,7 +257,7 @@ export default {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${id}`
       this.$http
         .delete(url, { data: this.tempProduct })
-        .then((response) => {
+        .then(() => {
           this.getProducts()
           this.emitter.emit('push-message', {
             style: 'danger',

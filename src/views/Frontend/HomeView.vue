@@ -247,7 +247,7 @@
                     <h5>接收第一手猴消息</h5>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <form novalidate="" class="input-group"><input id="email" type="email" class="form-control" placeholder="請輸入 Email" name="email"><button class="btn add-btn btn-third text-white px-4 m-0 rounded-end" @click.prevent='sendCoupon()'>訂閱</button>
+                    <form novalidate="" class="input-group"><input id="email" type="email" class="form-control" placeholder="請輸入 Email" name="email"><button type='button' class="btn add-btn btn-third text-white px-4 m-0 rounded-end" @click.prevent='sendCoupon()'>訂閱</button>
                     </form>
                 </div>
             </div>
