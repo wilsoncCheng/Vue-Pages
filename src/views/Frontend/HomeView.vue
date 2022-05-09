@@ -6,12 +6,13 @@
 <div class="home">
     <div id="portfolio">
         <div class="container">
-            <div class="container-fluid p-0">            <section class="section-padding" id="about">
+            <div class="container-fluid p-0">
+                <section class="section-padding" id="about">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-6 col-md-6 col-12">
-                            <h2 class="mb-lg-3 mb-3">全台最<span style="font-size:4px">不</span>專業的獼猴導覽網</h2>
+                            <h2 class="mb-lg-3 mb-3">全台最<span class="font-sm">不</span>專業的獼猴導覽網</h2>
 
                             <p>台灣獼猴是台灣的特有種野生動物，也是台灣唯一靈長類動物，就算不再是保育類動物，牠們還是台灣土地的一份子。現在雖然已經從保育動物中除名，但對於<b>野生動物</b>的不理解也是人猴衝突的主因。
                             </p>
@@ -170,7 +171,7 @@
                 </div>
             </div>
         </div>
-        <section class="pricing section-padding mb-3" id="section_5">
+        <section class="pricing section-padding" id="section_5">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -244,10 +245,10 @@
             <div class="row">
                 <div class="col-12 e-paper text-light">
                     <h3>訂閱猴樂園電子報</h3>
-                    <h5>接收第一手猴消息</h5>
+                    <h5>接收第一手猴消{{countCart.count}}息</h5>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <form novalidate="" class="input-group"><input id="email" type="email" class="form-control" placeholder="請輸入 Email" name="email"><button type='button' class="btn add-btn btn-third text-white px-4 m-0 rounded-end" @click.prevent='sendCoupon()'>訂閱</button>
+                    <form novalidate="" class="input-group"><input id="email" type="email" class="form-control" placeholder="請輸入 Email" name="email"><button type='button' class="btn add-btn btn-third text-white px-4 m-0 rounded-end" @click.prevent='countCart.addCart()'>訂閱</button>
                     </form>
                 </div>
             </div>
@@ -257,24 +258,16 @@
 </template>
 <script>
 import 'vue-loading-overlay/dist/vue-loading.css'
+import { usecountCart } from '@/store/countProduct'
 export default {
   name: 'HomeView',
+  setup () {
+    const countCart = usecountCart()
+    return {
+      countCart
+    }
+  },
   methods: {
-    sendCoupon () {
-      const data = {
-        code: 'testcode'
-      }
-      this.$http
-        .post(
-          `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`,
-          data
-        )
-        .then((res) => {
-          alert(res)
-        }).catch((err) => {
-          alert(err)
-        })
-    },
     loading () {
       const loader = this.$loading.show()
       setTimeout(() => {

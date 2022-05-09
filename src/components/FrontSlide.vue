@@ -1,6 +1,6 @@
 <template>
           <div class="active position-relative mb-3">
-                <img src="../assets/image/school5.jpg" class="d-block w-100" alt="..." style="width:1600px;height:auto;max-height:600px">
+                <img src="../assets/image/school5.jpg" class="d-block w-100 mb-3" alt="..." style="width:1600px;height:auto;max-height:600px">
                 <div class="position-absolute  banner-box d-flex align-items-center justify-content-center justify-content-lg-center px-0 px-lg-3"
                     style="top:55%;width:100%;margin:0 auto">
                     <div id='indexcontent'

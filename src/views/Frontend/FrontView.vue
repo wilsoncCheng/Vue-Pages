@@ -11,6 +11,7 @@ import FrontNavbar from '@/components/FrontNavbar.vue'
 import FrontSlide from '@/components/FrontSlide.vue'
 import FooterInfor from '@/components/FooterInfor.vue'
 import ToastMessages from '@/components/ToastMessages.vue'
+import { usecountCart } from '@/store/countProduct'
 export default {
   components: {
     FrontSlide,
@@ -20,7 +21,8 @@ export default {
   },
   provide () {
     return {
-      emitter
+      emitter,
+      usecountCart
     }
   }
 }

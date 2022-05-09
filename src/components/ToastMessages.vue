@@ -2,7 +2,7 @@
 <div
       v-for="(msg, key) in messages"
       :key="key"
-      class="toast show" style="position: fixed;right: 0;top:0;z-index:1500"
+      class="toast show" style="position: fixed;right: 0;top:10px;z-index:1500"
       :class="`toast${key}`"
       role="alert"
     >

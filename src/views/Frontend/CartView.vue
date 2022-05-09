@@ -185,7 +185,7 @@ export default {
           `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`,
           { data }
         )
-        .then((res) => {
+        .then(() => {
           this.isLoadingItem = ''
           emitter.emit('get-cart')
           this.emitter.emit('push-message', {
@@ -202,7 +202,7 @@ export default {
       }
       this.isLoadingItem = item.id
       this.$http.put(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`, { data })
-        .then(res => {
+        .then(() => {
           this.getcart()
           this.isLoadingItem = ''
         })

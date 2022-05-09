@@ -279,6 +279,10 @@
             margin: 20px 100px 60px 100px;
         }
         
+        .pagination {
+            justify-content: center;
+        }
+        
         .add-btn {
             color: #fff;
             background-color: #141414;
@@ -668,4 +672,8 @@
             60% {
                 transform: translate3d(4px, 0, 0);
             }
+        }
+        
+        .font-sm {
+            font-size: 4px;
         }
